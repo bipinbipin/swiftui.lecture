@@ -11,6 +11,7 @@
 		CE85CB4926C4199A0091E21C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85CB4826C4199A0091E21C /* ContentView.swift */; };
 		CE85CB4B26C4199E0091E21C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE85CB4A26C4199E0091E21C /* Assets.xcassets */; };
 		CE85CB4E26C4199E0091E21C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE85CB4D26C4199E0091E21C /* Preview Assets.xcassets */; };
+		CE85CB5626C41B790091E21C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85CB5526C41B790091E21C /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		CE85CB4A26C4199E0091E21C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE85CB4D26C4199E0091E21C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE85CB4F26C4199E0091E21C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE85CB5526C41B790091E21C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				CE85CB4A26C4199E0091E21C /* Assets.xcassets */,
 				CE85CB4F26C4199E0091E21C /* Info.plist */,
 				CE85CB4C26C4199E0091E21C /* Preview Content */,
+				CE85CB5526C41B790091E21C /* NetworkManager.swift */,
 			);
 			path = swiftui.lecture;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE85CB5626C41B790091E21C /* NetworkManager.swift in Sources */,
 				CE85CB4926C4199A0091E21C /* ContentView.swift in Sources */,
 				CE85CB4726C4199A0091E21C /* swiftui_lectureApp.swift in Sources */,
 			);
