@@ -55,11 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				CE85CB4626C4199A0091E21C /* swiftui_lectureApp.swift */,
+				CE85CB5526C41B790091E21C /* NetworkManager.swift */,
 				CE85CB4826C4199A0091E21C /* ContentView.swift */,
 				CE85CB4A26C4199E0091E21C /* Assets.xcassets */,
 				CE85CB4F26C4199E0091E21C /* Info.plist */,
 				CE85CB4C26C4199E0091E21C /* Preview Content */,
-				CE85CB5526C41B790091E21C /* NetworkManager.swift */,
 			);
 			path = swiftui.lecture;
 			sourceTree = "<group>";

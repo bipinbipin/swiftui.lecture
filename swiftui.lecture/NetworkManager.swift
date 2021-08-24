@@ -13,34 +13,31 @@ struct ApiResponse: Codable {
     var timeStamp: String
 }
 
-final class NetworkManager: ObservableObject {
+final class NetworkManager {
     
-    // create a single static instance of this class
-    static let shared = NetworkManager()
+    static var shared = NetworkManager()
     
     private init() {}
     
     let url = "https://demo.astontech.com/get-data"
     
     func getData(completed: @escaping (Result<ApiResponse, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string: url)!)) { data, response, error in
-            // check that we get a 200 response
-            
-            // check that data is valid
+        let task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+            // check for 200
+            // check data is valid
             guard let data = data else {
-                print("invalid data")
+                print("bad data")
                 return
             }
-            
+            // decode json
             do {
-                print("\(data)")
                 let decodedResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
                 completed(.success(decodedResponse))
             } catch {
                 print("error decoding json")
             }
         }
+        
         task.resume()
     }
-    
 }
