@@ -8,20 +8,25 @@
 import SwiftUI
 
 final class ContentViewModel: ObservableObject {
-    @Published var firstName = ""
-    @Published var lastName = ""
-    @Published var serverTime = ""
+    @Published var account_number = ""
+    @Published var account_owner = ""
+    @Published var username = ""
+    @Published var balance = ""
     
     func loadData() {
+        NetworkManager.shared.accountNumber = self.account_number
         NetworkManager.shared.getData { [self] result in
             // dont know how long this will take...
             DispatchQueue.main.async {
                 switch result {
                 case .success(let apiResponse):
                     print(apiResponse)
-                    self.firstName = apiResponse.firstName
-                    self.lastName = apiResponse.lastName
-                    self.serverTime = apiResponse.timeStamp
+                    self.account_owner = "Account Owner: \(apiResponse.account_owner)"
+                    self.username = "Username: \(apiResponse.username)"
+                    let formatter = NumberFormatter()
+                    formatter.numberStyle = .currency
+                    let bal = formatter.string(from: NSNumber(value: apiResponse.balance))!
+                    self.balance = "Balance: \(bal)"
                 case .failure(let error):
                     print(error)
                 }
@@ -44,21 +49,34 @@ struct ContentView: View {
             VStack {
                 WelcomeView(brandLogo: "aston-logo")
                 
+                Spacer()
+                
+                HStack {
+                    Text("Account Number:")
+                    TextField("", text: $viewModel.account_number)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 80)
+                        
+                }
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                
                 Button {
                     print("pressed..")
                     viewModel.loadData()
                 } label: {
-                    ButtonView(title: "Load Data...")
+                    ButtonView(title: "Account Balance")
                 }
-                
+
                 VStack {
-                    HStack {
-                        Text(viewModel.firstName)
-                        Text(viewModel.lastName)
-                    }
-                    Text(viewModel.serverTime)
+                    Text(viewModel.account_owner)
+                    Text(viewModel.username)
+                    Text(viewModel.balance)
                 }
+                .font(.title3)
                 .foregroundColor(.white)
+                
+                Spacer()
                 
                 
             }
@@ -96,7 +114,7 @@ struct WelcomeView: View {
             .font(.largeTitle)
             .foregroundColor(.white)
         
-        Text("To the first Aston Tech Talk!")
+        Text("To the SECOND Aston Tech Talk!")
             .font(.title3)
             .foregroundColor(.white)
     }

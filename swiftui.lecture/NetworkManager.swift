@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ApiResponse: Codable {
-    var firstName: String
-    var lastName: String
-    var timeStamp: String
+    var account_number: Int
+    var account_owner: String
+    var username: String
+    var password: String
+    var balance: Double
 }
 
 final class NetworkManager {
@@ -19,10 +21,11 @@ final class NetworkManager {
     
     private init() {}
     
-    let url = "https://demo.astontech.com/get-data"
+    let baseUrl = "https://localhost/account/"
+    var accountNumber: String = ""
     
     func getData(completed: @escaping (Result<ApiResponse, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+        let task = URLSession.shared.dataTask(with: URL(string: baseUrl + accountNumber)!) { data, response, error in
             // check for 200
             // check data is valid
             guard let data = data else {
@@ -31,6 +34,7 @@ final class NetworkManager {
             }
             // decode json
             do {
+                print(data)
                 let decodedResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
                 completed(.success(decodedResponse))
             } catch {
